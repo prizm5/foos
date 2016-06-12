@@ -8,6 +8,11 @@ hipchat_room = 'your_room_id'
 min_goal_usecs = 1000
 min_secs_between_goals = 3
 
+team_names = {"yellow": "yellow", "black": "black"}
+team_colors = {"yellow": (10, 7, 0), "black": (0, 0, 0)}
+team_names = {"yellow": "blue", "black": "red"}
+team_colors = {"yellow": (0, 0, 3), "black": (7, 0, 0)}
+
 # dev set
 plugins = ['replay_debug', 'score', 'game', 'sound', 'io_debug', 'menu', 'control', 'league', 'event_debugger']
 
