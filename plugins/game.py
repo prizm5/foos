@@ -15,7 +15,7 @@ class Plugin:
         self.bus.subscribe(self.process_event, thread=True)
         self.game_win_score = None
         self.check_win_time = None
-        self.check_delay = 2
+        self.check_delay = 0
         self.current_score = {}
         self.party_timeout = None
         self.game_end_time = None
@@ -32,6 +32,7 @@ class Plugin:
     def process_event(self, ev):
         now = time.time()
         if ev.name == "score_changed":
+            logger.info("Score Changed: %s", ev)
             self.check_win_time = now + self.check_delay
             self.current_score = ev.data
         if ev.name == "replay_start":
@@ -60,6 +61,7 @@ class Plugin:
         self.sudden_death = False
 
     def notifyWinner(self, t, due_to_timeout=False):
+        logger.info('winner notified')
         d = {'team': t, 'due_to_timeout': due_to_timeout}
         d.update(self.current_score)
         self.bus.notify('win_game', d)
@@ -68,6 +70,7 @@ class Plugin:
     def check_win(self):
         if self.game_win_score:
             for t in ['yellow', 'black']:
+                logger.info("Team Score %s %s %s",t, self.current_score.get(t, 0), self.game_win_score)
                 if self.current_score.get(t, 0) >= self.game_win_score:
                     self.notifyWinner(t)
 

@@ -19,7 +19,7 @@ class Plugin:
                 'increment_score': lambda d: self.increment(d['team']),
                 'decrement_score': lambda d: self.decrement(d['team']),
                 'reset_score': lambda d: self.reset()}
-        self.bus.subscribe_map(fmap, thread=True)
+        self.bus.subscribe_map(fmap, thread=False)
 
     def score(self, event):
         team = event['team']
@@ -43,8 +43,9 @@ class Plugin:
 
     def increment(self, team):
         s = self.scores.get(team, 0)
-        self.scores[team] = (s + 1) % 10
+        self.scores[team] = (s + 1)
         self.pushState()
+        self.scores[team] = (s + 1) % 10
 
     def decrement(self, team):
         s = self.scores.get(team, 0)

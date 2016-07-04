@@ -1,8 +1,10 @@
+#!/usr/bin/python3
+
 import RPi.GPIO as GPIO
 import time
 import queue
 from threading import Thread
-from .buttons import *
+
 
 class Plugin():
     def __init__(self, bus):
@@ -10,9 +12,11 @@ class Plugin():
         self.bus.subscribe(self.process_event, thread=True)
         GPIO.setmode(GPIO.BCM)
         self.AddButton(17, self.handle_red_button,500)
-        self.bus.notify("movement_detected")
-        self.bus.notify("people_start_playing")
-        self.bus.notify("set_game_mode", {"mode": 10, "timeout": 20 })
+        
+        self.bus.notify("set_game_mode", {"mode": 5 })
+        self.bus.notify("reset_score")
+        self.bus.notify("set_players",{'black':['Nils','Max'], 'yellow':['Arlington','Keith']})
+        
 
     def process_event(self, ev):
         now = time.time()
@@ -22,7 +26,8 @@ class Plugin():
             time.sleep(0.01)
     
     def handle_red_button(self, channel):
-        self.bus.notify('increment_score', {'team': 'black'})
+        self.bus.notify('goal_event', {'source': 'serial', 'team': 'yellow', 'duration': 100001})
+        #self.bus.notify('increment_score', {'team': 'yellow'})
 
     def AddSensor(self, port, callback, bounce):
         p = int(port)
