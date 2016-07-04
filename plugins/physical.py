@@ -3,19 +3,21 @@
 import RPi.GPIO as GPIO
 import time
 import queue
+import config
 from threading import Thread
 
 
 class Plugin():
+
     def __init__(self, bus):
         self.bus = bus
         self.bus.subscribe(self.process_event, thread=True)
         GPIO.setmode(GPIO.BCM)
-        self.AddButton(17, self.handle_red_button,500)
+        self.AddButton(config.red_button, self.handle_red_button, config.button_debnce)
+        self.AddButton(config.green_button, self.handle_green_button, config.button_debnce)
         
-        #self.bus.notify("set_game_mode", {"mode": 5 })
-        #self.bus.notify("reset_score")
-        #self.bus.notify("set_players",{'black':['Nils','Max'], 'yellow':['Arlington','Keith']})
+        self.AddSensor(config.yellow_trigger, self.handle_yellow, config.button_debnce)
+        self.AddSensor(config.black_trigger, self.handle_black, config.button_debnce)
         
 
     def process_event(self, ev):
@@ -25,9 +27,20 @@ class Plugin():
         while True:
             time.sleep(0.01)
     
+    def handle_yellow(self, channel):
+        self.bus.notify('goal_event', {'source': 'serial', 'team': 'yellow', 'duration': 100001})
+        
+    def handle_black(self, channel):
+        self.bus.notify('goal_event', {'source': 'serial', 'team': 'black', 'duration': 100001})
+    
     def handle_red_button(self, channel):
         self.bus.notify('goal_event', {'source': 'serial', 'team': 'yellow', 'duration': 100001})
-        #self.bus.notify('increment_score', {'team': 'yellow'})
+        
+    def handle_green_button(self, channel):
+        self.bus.notify("set_game_mode", {"mode": 10 })
+        self.bus.notify("reset_score")
+        self.bus.notify("set_players",{'black':['Player 1','Player 2'], 'yellow':['Player 3','Player 4']})
+    
 
     def AddSensor(self, port, callback, bounce):
         p = int(port)

@@ -10,19 +10,26 @@ pusher_channel ='foosball'
 min_goal_usecs = 1000
 min_secs_between_goals = 5
 
+button_debnce=500
+red_button=17
+green_button=27
+yellow_trigger=23
+black_trigger=24
+
+
 # dev set
 plugins = ['pusherclient', 'game', 'score','physical', 'io_keyboard', 'control', 'event_debugger',]
 
 # full blown set: arduino, camera, league & sync, upload, chat
 # plugins = ['replay', 'camera', 'score', 'game', 'upload', 'sound', 'leds', 'io_debug', 'io_serial', 'standby', 'menu', 'control', 'hipbot', 'motiondetector', 'league', 'event_debugger', 'league_sync']
 
-show_instructions = True
+show_instructions = False
 
 replay_path = '/home/pi/replay'
 ignore_recent_chunks = 1
 short_chunks = 10
 long_chunks = 25
-	
+
 league_dir = './league'
 league_url = 'http://localhost:8888/api'
 league_apikey = 'put-your-apikey-here'
