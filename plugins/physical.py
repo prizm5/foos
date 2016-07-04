@@ -13,9 +13,9 @@ class Plugin():
         GPIO.setmode(GPIO.BCM)
         self.AddButton(17, self.handle_red_button,500)
         
-        self.bus.notify("set_game_mode", {"mode": 5 })
-        self.bus.notify("reset_score")
-        self.bus.notify("set_players",{'black':['Nils','Max'], 'yellow':['Arlington','Keith']})
+        #self.bus.notify("set_game_mode", {"mode": 5 })
+        #self.bus.notify("reset_score")
+        #self.bus.notify("set_players",{'black':['Nils','Max'], 'yellow':['Arlington','Keith']})
         
 
     def process_event(self, ev):
