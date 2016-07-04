@@ -32,7 +32,7 @@ class Plugin():
             time.sleep(1)
         
     def connect_handler(self, data):
-        channel = self.p.subscribe('foosball')
+        channel = self.p.subscribe(config.pusher_channel)
         channel.bind('start_game', self.start_game)
 
     def start_game(self, env):
@@ -42,7 +42,14 @@ class Plugin():
         self.bus.notify("set_players",{'black':data["black"], 'yellow':data["yellow"]})
         logger.info("Pusher Event: %s", )
 
-
+#Pusher start game message
+#{
+#   "teams": [
+#       "yellow": ["Nilhouse", "Keith"],
+#       "black": ["MrsHammer", "Maximus"]
+#   ],
+#   "mode": 5
+#}
 
 #       self.bus.notify("set_game_mode", {"mode": 5 })
 #       self.bus.notify("reset_score")
