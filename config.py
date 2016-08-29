@@ -8,7 +8,7 @@ hipchat_room = 'your_room_id'
 pusher_channel ='foosball'
 
 min_goal_usecs = 1000
-min_secs_between_goals = 5
+min_secs_between_goals = 3
 
 button_debnce=500
 red_button=17
