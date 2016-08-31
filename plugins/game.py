@@ -65,6 +65,7 @@ class Plugin:
         d = {'team': t, 'due_to_timeout': due_to_timeout}
         d.update(self.current_score)
         self.bus.notify('win_game', d)
+        time.sleep(2)
         self.bus.notify('reset_score', d)
 
     def check_win(self):

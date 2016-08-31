@@ -43,7 +43,10 @@ class Plugin:
 
     def increment(self, team):
         s = self.scores.get(team, 0)
-        self.scores[team] = (s + 1)
+        if s == 9 :
+            self.scores[team] = 'X'
+        else:
+            self.scores[team] = (s + 1)
         self.pushState()
         self.scores[team] = (s + 1) % 10
 

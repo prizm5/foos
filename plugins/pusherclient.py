@@ -29,7 +29,9 @@ class Plugin():
         self.p.connection.bind('pusher:connection_established', self.connect_handler)
         self.p.connect()
 
-        fmap = { 'score_goal': self.score }
+        fmap = { 'score_goal': self.score,
+                 'win_game': self.score,  
+                 'reset_score': self.score  }
         self.bus.subscribe_map(fmap, thread=False)
     
     def run(self):
@@ -38,7 +40,7 @@ class Plugin():
             time.sleep(1)
         
     def score(self, event):
-        self.pusher.trigger('foosball','score',event)
+        self.pusher.trigger('foosball','score_goal',event)
 
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)
