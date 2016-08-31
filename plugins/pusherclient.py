@@ -24,7 +24,7 @@ class Plugin():
             data = json.load(data_file)
             
         self.p = pusherclient.Pusher(data['pusher']['key'])
-        self.pusher = Pusher(app_id=u'4', key=data['pusher']['key'], secret=data['pusher']['secret'])
+        self.pusher = Pusher(app_id=data['pusher']['app_id'], key=data['pusher']['key'], secret=data['pusher']['secret'])
         
         self.p.connection.bind('pusher:connection_established', self.connect_handler)
         self.p.connect()
@@ -38,8 +38,7 @@ class Plugin():
             time.sleep(1)
         
     def score(self, event):
-        pused = pusher.Pusher() p[‘mychannel’].trigger(‘myevent’, ‘mydata’)
-        self.puser.trigger('foosball','score',''event)
+        self.pusher.trigger('foosball','score',''event)
 
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)
