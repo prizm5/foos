@@ -3,7 +3,9 @@ import time
 import subprocess
 import random
 import os
+import logging.config
 
+logger = logging.getLogger(__name__)
 
 class Plugin:
     # This map scores => sounds
@@ -46,6 +48,7 @@ class Plugin:
 
     def process_event(self, ev):
         sounds = []
+        logger.info("Sound Event: %s", ev)
         if ev.name == 'set_game_mode':
             self.game_mode = ev.data['mode']
         elif ev.name == 'score_goal':

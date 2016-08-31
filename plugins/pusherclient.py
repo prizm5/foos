@@ -40,15 +40,12 @@ class Plugin():
         self.bus.notify("set_game_mode", {"mode": data["mode"] })
         self.bus.notify("reset_score")
         self.bus.notify("set_players",{'black':data["black"], 'yellow':data["yellow"]})
-        logger.info("Pusher Event: %s", )
+        logger.info("Pusher Event: %s", data)
 
-#Pusher start game message
 #{
-#   "teams": [
-#       "yellow": ["Nilhouse", "Keith"],
-#       "black": ["MrsHammer", "Maximus"]
-#   ],
-#   "mode": 5
+#  "yellow": ["Nilhouse", "Keith"],
+#  "black": ["MrsHammer", "Maximus"],
+#  "mode": 5
 #}
 
 #       self.bus.notify("set_game_mode", {"mode": 5 })
