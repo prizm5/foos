@@ -6,6 +6,9 @@ import queue
 import config
 from threading import Thread
 
+class GameState(Enum):
+    Idle = 1
+    Active = 2
 
 class Plugin():
 
@@ -13,15 +16,22 @@ class Plugin():
         self.bus = bus
         self.bus.subscribe(self.process_event, thread=True)
         GPIO.setmode(GPIO.BCM)
+        
         self.AddButton(config.red_button, self.handle_red_button, config.button_debnce)
         self.AddButton(config.green_button, self.handle_green_button, config.button_debnce)
         
         self.AddSensor(config.yellow_trigger, self.handle_yellow, config.button_debnce)
         self.AddSensor(config.black_trigger, self.handle_black, config.button_debnce)
         
+        self.greenpush = 0
+        self.game_mode = GameState.Idle
 
     def process_event(self, ev):
         now = time.time()
+        if ev.name == "set_game_mode":
+            self.game_mode = GameState.Active
+        if ev.name == "score_reset":
+            self.game_mode = GameState.Idle
 
     def run(self):
         while True:
@@ -34,13 +44,17 @@ class Plugin():
         self.bus.notify('goal_event', {'source': 'serial', 'team': 'black', 'duration': 100001})
     
     def handle_red_button(self, channel):
-        self.bus.notify('goal_event', {'source': 'serial', 'team': 'yellow', 'duration': 100001})
-        
-    def handle_green_button(self, channel):
         self.bus.notify("set_game_mode", {"mode": 10 })
         self.bus.notify("reset_score")
         self.bus.notify("set_players",{'black':['Player 1','Player 2'], 'yellow':['Player 3','Player 4']})
-    
+        
+    def handle_green_button(self, channel):
+        if self.game_mode == GameState.Active && self.greenpush == 1 :
+            self.bus.notify('goal_event', {'source': 'serial', 'team': 'yellow', 'duration': 100001})
+           self.greenpush += 1 
+        else:
+            self.greenpush = 0
+
 
     def AddSensor(self, port, callback, bounce):
         p = int(port)

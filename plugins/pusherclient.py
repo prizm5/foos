@@ -40,7 +40,12 @@ class Plugin():
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)
         channel.bind('start_game', self.start_game)
+        channel.bind('simulate_score', self.simulate_score)
 
+    def simulate_score(self, env):
+        data = json.loads(env)
+        self.bus.notify('goal_event', {'source': 'serial', 'team': 'yellow', 'duration': 100001})
+        
     def start_game(self, env):
         data = json.loads(env)
         self.bus.notify("set_game_mode", {"mode": data["mode"] })

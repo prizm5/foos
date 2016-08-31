@@ -11,8 +11,8 @@ min_goal_usecs = 1000
 min_secs_between_goals = 3
 
 button_debnce=500
-red_button=17
-green_button=27
+red_button=27
+green_button=17
 yellow_trigger=23
 black_trigger=24
 
