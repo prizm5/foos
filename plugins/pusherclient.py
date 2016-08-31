@@ -46,7 +46,7 @@ class Plugin():
         channel = self.p.subscribe(config.pusher_channel)
         channel.bind('start_game', self.start_game)
         channel.bind('simulate_score', self.simulate_score)
-        channel.bind('reset_score', self.simulate_score)
+        channel.bind('reset_score', self.simulate_reset)
 
     def simulate_reset(self, env):
         self.bus.notify("set_game_mode", {"mode": 10 })
