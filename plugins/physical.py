@@ -3,14 +3,12 @@
 import RPi.GPIO as GPIO
 import time
 import queue
-import Enum
 import config
 from threading import Thread
 
-class GameState(Enum):
-    Idle = 1
-    Active = 2
-
+class GameState:
+    Idle, Active = range(2)
+    
 class Plugin():
 
     def __init__(self, bus):
