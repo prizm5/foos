@@ -15,5 +15,5 @@ msg = {
   "black": ["MrsHammer", "Maximus"],
   "mode": 5
 }
-print msg.get('yellow')
+print "%s" msg.get('yellow')
 #response = requests.post(url, data=json.dumps(payload), headers=headers)
