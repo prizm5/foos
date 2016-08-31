@@ -3,6 +3,7 @@
 import RPi.GPIO as GPIO
 import time
 import queue
+import Enum
 import config
 from threading import Thread
 
