@@ -25,12 +25,18 @@ class Plugin():
         self.p = pusherclient.Pusher(data['pusher']['key'])
         self.p.connection.bind('pusher:connection_established', self.connect_handler)
         self.p.connect()
+
+        fmap = { 'score_goal': self.score }
+        self.bus.subscribe_map(fmap, thread=False)
     
     def run(self):
         while True:
             # Do other things in the meantime here...
             time.sleep(1)
         
+    def score(self, event):
+        self.p.trigger('score',event)
+
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)
         channel.bind('start_game', self.start_game)
