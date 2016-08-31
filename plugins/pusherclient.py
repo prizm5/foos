@@ -39,7 +39,7 @@ class Plugin():
             time.sleep(1)
         
     def send(self, name, event):
-        self.pusher.trigger('foosball', name, event)
+        self.pusher.trigger('foosball-out', name, event)
 
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)
