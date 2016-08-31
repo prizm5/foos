@@ -30,8 +30,7 @@ class Plugin():
         self.p.connect()
 
         fmap = { 'score_goal': lambda d: self.send('score_goal',d),
-                 'win_game': lambda d: self.send('win_game', d),  
-                 'reset_score': lambda d: self.send('reset_score', d)  }
+                 'win_game': lambda d: self.send('win_game', d)  }
         self.bus.subscribe_map(fmap, thread=False)
     
     def run(self):
@@ -46,12 +45,6 @@ class Plugin():
         channel = self.p.subscribe(config.pusher_channel)
         channel.bind('start_game', self.start_game)
         channel.bind('simulate_score', self.simulate_score)
-        channel.bind('reset_score', self.simulate_reset)
-
-    def simulate_reset(self, env):
-        self.bus.notify("set_game_mode", {"mode": 10 })
-        self.bus.notify("reset_score")
-        self.bus.notify("set_players",{'black':['Player 1','Player 2'], 'yellow':['Player 3','Player 4']})
 
     def simulate_score(self, env):
         data = json.loads(env)
