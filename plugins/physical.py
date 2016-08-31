@@ -50,7 +50,7 @@ class Plugin():
         
     def handle_green_button(self, channel):
         if self.game_mode == GameState.Active and self.greenpush == 1 :
-            self.bus.notify('goal_event', {'source': 'serial', 'team': 'yellow', 'duration': 100001})
+           self.bus.notify('goal_event', {'source': 'serial', 'team': 'yellow', 'duration': 100001})
            self.greenpush += 1 
         else:
             self.greenpush = 0
