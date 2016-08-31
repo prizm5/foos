@@ -71,7 +71,7 @@ class Plugin:
     def check_win(self):
         if self.game_win_score:
             for t in ['yellow', 'black']:
-                logger.info("Team Score %s %s %s",t, self.current_score.get(t, 0), self.game_win_score)
+                #logger.info("Team Score %s %s %s",t, self.current_score.get(t, 0), self.game_win_score)
                 if self.current_score.get(t, 0) >= self.game_win_score:
                     self.notifyWinner(t)
 
