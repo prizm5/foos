@@ -10,5 +10,10 @@ payload={
     "text": "We Have a Winner!!!"}
 
 headers = {'content-type': 'application/json'}
-
+msg = {
+  "yellow": ["Nilhouse", "Keith"],
+  "black": ["MrsHammer", "Maximus"],
+  "mode": 5
+}
+payload.update(msg.get('yellow'))
 response = requests.post(url, data=json.dumps(payload), headers=headers)
