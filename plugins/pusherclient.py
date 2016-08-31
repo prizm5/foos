@@ -8,6 +8,7 @@ import config
 import logging.config
 import pusherclient
 import json
+from pusher import Pusher
 
 
 logging.config.dictConfig(config.log)
@@ -23,6 +24,8 @@ class Plugin():
             data = json.load(data_file)
             
         self.p = pusherclient.Pusher(data['pusher']['key'])
+        self.pusher = Pusher(app_id=u'4', key=data['pusher']['key'], secret=data['pusher']['secret'])
+        
         self.p.connection.bind('pusher:connection_established', self.connect_handler)
         self.p.connect()
 
@@ -35,7 +38,8 @@ class Plugin():
             time.sleep(1)
         
     def score(self, event):
-        self.p.trigger('score',event)
+        pused = pusher.Pusher() p[‘mychannel’].trigger(‘myevent’, ‘mydata’)
+        self.puser.trigger('foosball','score',''event)
 
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)
