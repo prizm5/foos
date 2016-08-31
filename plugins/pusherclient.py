@@ -40,7 +40,7 @@ class Plugin():
             time.sleep(1)
         
     def score(self, event):
-        self.pusher.trigger('foosball','score_goal',event)
+        self.pusher.trigger('foosball', event.name, event)
 
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)
