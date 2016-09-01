@@ -48,7 +48,7 @@ class Plugin:
             self.reset()
         if ev.name == "score_reset":
             self.reset()
-        if ev.name == "start_game":
+        if ev.name == "reset_score":
             logger.debug("game starting {ev}")
             self.current_game = ev 
 
