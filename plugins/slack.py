@@ -37,8 +37,8 @@ class Plugin():
         team = event["team"]
         players = event["players"]
         
-        if players != None :
-            p = players.get(event.team)
+        if players != None and players != {} :
+            p = players[team]
             msg = str.format(p[0],p[1])
             payload={
                 "username":"foosball",
