@@ -34,7 +34,7 @@ class Plugin():
         logger.info('-------------------------------')
         str = "We Have a Winner!!! \n {0} & {1}"
         headers = { 'content-type': 'application/json' }
-        team = event.["team"]
+        team = event["team"]
         game = event["game"]
         if game != None :
             logger.info("Slacking: {0}", team)
