@@ -37,7 +37,7 @@ class Plugin():
         team = event["team"]
         players = event["players"]
         
-        if game != None :
+        if players != None :
             logger.info("Slacking: {0}", team)
             team = players.get(event.team)
             msg = str.format(team[0],team[1])
