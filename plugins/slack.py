@@ -30,12 +30,6 @@ class Plugin():
         
     def send(self, name, event):
         headers = {'content-type': 'application/json'}
-        msg = event.game {
-            "yellow": ["Nilhouse", "Keith"],
-            "black": ["MrsHammer", "Maximus"],
-            "mode": 5
-        }
-
         winners = "We Have a Winner!!! \n {0} & {1}".format(event.game.get(event.team)[0],event.game.get(event.team)[1])
         payload={
             "username":"foosball",
