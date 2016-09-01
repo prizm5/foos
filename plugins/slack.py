@@ -15,7 +15,7 @@ msg = {
   "black": ["MrsHammer", "Maximus"],
   "mode": 5
 }
-winners = "{0} & {1}".format(mmsg.get('yellow'),msg.get('yellow')[1])
+winners = "{0} & {1}".format(msg.get('yellow'),msg.get('yellow')[1])
 payload.update({"winners": winners })
 print(payload)
 #response = requests.post(url, data=json.dumps(payload), headers=headers)
