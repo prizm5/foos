@@ -29,13 +29,11 @@ class Plugin():
         self.p.connection.bind('pusher:connection_established', self.connect_handler)
         self.p.connect()
 
-        #self.log_events = ['decrement_score', 'goal_event',
-        #                   'people_start_playing', 'people_stop_playing','goal_event',
-        #                   'increment_score','score_goal',
-        #                   'score_changed', 'win_game','goal_event']
-        #bus.subscribe(self.process_event, thread=True, subscribed_events=self.log_events)
+        self.log_events = ['goal_event', 'people_start_playing', 'people_stop_playing',
+                          'score_goal', 'score_changed', 'win_game', 'set_players',
+                          'score_reset','set_game_mode']
 
-        self.bus.subscribe(self.process_event, thread=True)
+        self.bus.subscribe(self.process_event, thread=True,subscribed_events=self.log_events)
     
     def run(self):
         while True:
