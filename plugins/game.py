@@ -23,7 +23,7 @@ class Plugin:
         self.sudden_death = False
         self.timeout_close_secs = 15
         self.modes = [(None, None), (3, None), (5, None), (3, 120), (3, 180)]
-        self.current_game = {}
+        self.current_players = {}
         # Turn off party mode after this time in sudden death
         self.party_mode_auto_off = 600
         registerMenu(self.getMenuEntries)
