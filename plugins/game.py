@@ -69,8 +69,8 @@ class Plugin:
         c = {'players': self.current_players}
         d.update(c)
         self.bus.notify('win_game', d)
-        time.sleep(2)
-        self.bus.notify('reset_score')
+        #time.sleep(2)
+        #self.bus.notify('reset_score')
 
     def check_win(self):
         if self.game_win_score:

@@ -29,9 +29,6 @@ class Plugin():
             time.sleep(1)
         
     def send(self, name, event):
-        logger.info('-------------------------------')
-        logger.info(event)
-        logger.info('-------------------------------')
         str = "We Have a Winner!!! \n {0} & {1}"
         headers = { 'content-type': 'application/json' }
         team = event["team"]
@@ -39,6 +36,10 @@ class Plugin():
         
         if players != None :
             p = players[team]
+            logger.info('-------------------------------')
+            logger.info(p)
+            logger.info('-------------------------------')
+
             msg = str.format(p[0],p[1])
             payload={
                 "username":"foosball",
