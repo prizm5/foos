@@ -38,9 +38,8 @@ class Plugin():
         players = event["players"]
         
         if players != None :
-            logger.info("Slacking: {0}", team)
-            team = players.get(event.team)
-            msg = str.format(team[0],team[1])
+            p = players.get(event.team)
+            msg = str.format(p[0],p[1])
             payload={
                 "username":"foosball",
                 "text": msg}
