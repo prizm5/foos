@@ -39,6 +39,7 @@ class Plugin():
             time.sleep(1)
         
     def send(self, name, event):
+        logger.debug("Pushering {0} {1}" , name, event)
         self.pusher.trigger('foosball-out', name, event)
 
     def connect_handler(self, data):
