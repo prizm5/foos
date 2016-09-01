@@ -49,7 +49,7 @@ class Plugin:
         if ev.name == "score_reset":
             self.reset()
         if ev.name == "reset_score":
-            self.current_game = ev 
+            self.current_game = ev.data 
 
     def reset(self):
         if self.party_timeout:
