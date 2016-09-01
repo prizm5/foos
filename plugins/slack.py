@@ -41,4 +41,4 @@ class Plugin():
                 "username":"foosball",
                 "text": msg}
             logger.info(payload)
-            response = requests.post(url, data=json.dumps(payload), headers=headers)
+            response = requests.post(self.url, data=json.dumps(payload), headers=headers)
