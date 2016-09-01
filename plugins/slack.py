@@ -1,9 +1,25 @@
 #!/usr/bin/python3
 
-import requests
+import 
+import time
+import queue
+from threading import Thread
+import config
+import logging.config
 import json
+import requests
 
-url = 'https://hooks.slack.com/services/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'
+
+
+logging.config.dictConfig(config.log)
+logger = logging.getLogger(__name__)
+
+CLIENT_SECRETS_FILE = "client_secrets.json"
+
+
+class Plugin():
+    def __init__(self, bus):
+url = 
 
 headers = {'content-type': 'application/json'}
 msg = {
