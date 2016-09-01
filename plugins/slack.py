@@ -29,6 +29,9 @@ class Plugin():
             time.sleep(1)
         
     def send(self, name, event):
+        logger.info('-------------------------------')
+        logger.info(event)
+        logger.info('-------------------------------')
         str = "We Have a Winner!!! \n {0} & {1}"
         headers = { 'content-type': 'application/json' }
         team = event.get('team')
