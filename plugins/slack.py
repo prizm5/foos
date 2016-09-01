@@ -36,7 +36,7 @@ class Plugin():
         headers = { 'content-type': 'application/json' }
         team = event.get('team')
         game = event.get('game')
-        if game.has_key(team) :
+        if game != {} :
             logger.info("Slacking: {0}", team)
             team = game.get(event.team)
             msg = str.format(team[0],team[1])
