@@ -29,6 +29,7 @@ class Plugin():
             time.sleep(1)
         
     def send(self, name, event):
+        logger.info(event)
         headers = {'content-type': 'application/json'}
         winners = "We Have a Winner!!! \n {0} & {1}".format(event.game.get(event.team)[0],event.game.get(event.team)[1])
         payload={
