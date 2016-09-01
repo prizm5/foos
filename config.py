@@ -87,7 +87,7 @@ log = {
         }
     },
     "root": {
-        "level": "INFO",
+        "level": "DEBUG",
         "handlers": ["console"]
     }
 }

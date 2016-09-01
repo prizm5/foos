@@ -36,5 +36,5 @@ class Plugin():
             "username":"foosball",
             "text": winners}
 
-        print(payload)
+        logger.debug(payload)
         #response = requests.post(url, data=json.dumps(payload), headers=headers)
