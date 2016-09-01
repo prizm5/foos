@@ -49,7 +49,7 @@ class Plugin:
         if ev.name == "score_reset":
             self.reset()
         if ev.name == "start_game":
-            self.current_game = env
+            self.current_game = ev 
 
     def reset(self):
         if self.party_timeout:
@@ -66,7 +66,7 @@ class Plugin:
         logger.info('winner notified')
         d = {'team': t, 'due_to_timeout': due_to_timeout}
         d.update(self.current_score)
-        c = {'game':self.current_game}
+        c = {'game': self.current_game}
         d.update(c)
         self.bus.notify('win_game', d)
         time.sleep(2)
