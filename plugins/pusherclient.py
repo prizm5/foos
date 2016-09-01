@@ -29,18 +29,16 @@ class Plugin():
         self.p.connection.bind('pusher:connection_established', self.connect_handler)
         self.p.connect()
 
-        fmap = { 'score_goal': lambda d: self.send('score_goal',d),
-                 'win_game': lambda d: self.send('win_game', d)  }
-        self.bus.subscribe_map(fmap, thread=False)
+        self.bus.subscribe(self.process_event, thread=True)
     
     def run(self):
         while True:
             # Do other things in the meantime here...
             time.sleep(1)
         
-    def send(self, name, event):
-        logger.debug("Pushering {0} {1}" , name, event)
-        self.pusher.trigger('foosball-out', name, event)
+    def process_event(self, ev):
+        logger.debug("Pushering {0} {1}" , ev.name, ev.event)
+        self.pusher.trigger('foosball-out', ev.name, ev.data)
 
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)
