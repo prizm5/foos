@@ -49,6 +49,9 @@ class Plugin:
         if ev.name == "score_reset":
             self.reset()
         if ev.name == "reset_score":
+            logger.info('==========================================')
+            logger.info(ev.data)
+            logger.info('==========================================')
             self.current_game = ev.data 
 
     def reset(self):
@@ -69,6 +72,7 @@ class Plugin:
         c = {'game': self.current_game}
         d.update(c)
         self.bus.notify('win_game', d)
+        time.sleep(2)
         self.bus.notify('reset_score')
 
     def check_win(self):
