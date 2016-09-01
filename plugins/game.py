@@ -49,9 +49,6 @@ class Plugin:
         if ev.name == "score_reset":
             self.reset()
         if ev.name == "set_players":
-            logger.info('==========================================')
-            logger.info(ev.data)
-            logger.info('==========================================')
             self.current_players = ev.data 
 
     def reset(self):
