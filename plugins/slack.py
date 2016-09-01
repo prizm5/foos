@@ -21,7 +21,7 @@ class Plugin():
             data = json.load(data_file)
         self.url = data['pusher']['slack']
         fmap = { 'win_game': lambda d: self.send('win_game', d) }
-        self.bus.subscribe_map(fmap, thread=False)
+        self.bus.subscribe_map(fmap, thread=True)
 
     def run(self):
         while True:
@@ -29,12 +29,16 @@ class Plugin():
             time.sleep(1)
         
     def send(self, name, event):
-        logger.info(event)
+        logger.info("Slacking: {0}",event)
+        str = "We Have a Winner!!! \n {0} & {1}"
         headers = { 'content-type': 'application/json' }
-        winners = "We Have a Winner!!! \n {0} & {1}".format(event.game.get(event.team)[0],event.game.get(event.team)[1])
-        payload={
-            "username":"foosball",
-            "text": winners}
-
-        logger.debug(payload)
-        #response = requests.post(url, data=json.dumps(payload), headers=headers)
+        team = event.get('team')
+        game = event.get('game')
+        if game.has_key(team) :
+            team = game.get(event.team)
+            msg = str.format(team[0],team[1])
+            payload={
+                "username":"foosball",
+                "text": msg}
+            logger.debug(payload)
+            #response = requests.post(url, data=json.dumps(payload), headers=headers)

@@ -19,7 +19,7 @@ class Plugin:
                 'increment_score': lambda d: self.increment(d['team']),
                 'decrement_score': lambda d: self.decrement(d['team']),
                 'reset_score': lambda d: self.reset()}
-        self.bus.subscribe_map(fmap, thread=False)
+        self.bus.subscribe_map(fmap, thread=True)
 
     def score(self, event):
         team = event['team']
