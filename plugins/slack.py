@@ -9,8 +9,6 @@ import logging.config
 import json
 import requests
 
-
-
 logging.config.dictConfig(config.log)
 logger = logging.getLogger(__name__)
 
@@ -19,20 +17,30 @@ CLIENT_SECRETS_FILE = "client_secrets.json"
 
 class Plugin():
     def __init__(self, bus):
-url = 
+        self.bus = bus
+        with open(CLIENT_SECRETS_FILE) as data_file:    
+            data = json.load(data_file)
+        self.url = data['pusher']['slack']
+        fmap = { 'win_game': lambda d: self.send('win_game', d) }
+        self.bus.subscribe_map(fmap, thread=False)
 
-headers = {'content-type': 'application/json'}
-msg = {
-  "yellow": ["Nilhouse", "Keith"],
-  "black": ["MrsHammer", "Maximus"],
-  "mode": 5
-}
+    def run(self):
+        while True:
+            # Do other things in the meantime here...
+            time.sleep(1)
+        
+    def send(self, name, event):
+        headers = {'content-type': 'application/json'}
+        msg = event.game {
+            "yellow": ["Nilhouse", "Keith"],
+            "black": ["MrsHammer", "Maximus"],
+            "mode": 5
+        }
 
-winners = "We Have a Winner!!! \n {0} & {1}".format(msg.get('yellow')[0],msg.get('yellow')[1])
-payload={
-    "username":"foosball",
-    "text": winners}
+        winners = "We Have a Winner!!! \n {0} & {1}".format(event.game.get(event.team)[0],event.game.get(event.team)[1])
+        payload={
+            "username":"foosball",
+            "text": winners}
 
-
-print(payload)
-#response = requests.post(url, data=json.dumps(payload), headers=headers)
+        print(payload)
+        #response = requests.post(url, data=json.dumps(payload), headers=headers)

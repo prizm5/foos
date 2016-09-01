@@ -18,7 +18,7 @@ black_trigger=24
 
 
 # dev set
-plugins = ['pusherclient', 'game', 'score','physical', 'control', 'event_debugger','league']
+plugins = ['pusherclient', 'game', 'score','physical', 'control', 'event_debugger','league', 'slack']
 
 # full blown set: arduino, camera, league & sync, upload, chat
 # plugins = ['replay', 'camera', 'score', 'game', 'upload', 'sound', 'leds', 'io_debug', 'io_serial', 'standby', 'menu', 'control', 'hipbot', 'motiondetector', 'league', 'event_debugger', 'league_sync']

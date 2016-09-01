@@ -66,6 +66,8 @@ class Plugin:
         logger.info('winner notified')
         d = {'team': t, 'due_to_timeout': due_to_timeout}
         d.update(self.current_score)
+        c = {'game':self.current_game}
+        d.update(c)
         self.bus.notify('win_game', d)
         time.sleep(2)
         self.bus.notify('reset_score', d)
