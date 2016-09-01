@@ -41,7 +41,6 @@ class Plugin():
             d = ev.data
         else:
             d= {}
-        logger.info("Pushering {0}" , ev.name)
         self.pusher.trigger("foosball-out", ev.name, d)
 
     def connect_handler(self, data):
