@@ -37,8 +37,12 @@ class Plugin():
             time.sleep(1)
         
     def process_event(self, ev):
-        logger.debug("Pushering {0} {1}" , ev.name, ev.data)
-        self.pusher.trigger('foosball-out', ev.name, ev.data)
+        if ev.data != None :
+            d = ev.data
+        else:
+            d= {}
+        logger.info("Pushering {0}" , ev.name)
+        self.pusher.trigger("foosball-out", ev.name, d)
 
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)

@@ -29,12 +29,12 @@ class Plugin():
             time.sleep(1)
         
     def send(self, name, event):
-        logger.info("Slacking: {0}",event)
         str = "We Have a Winner!!! \n {0} & {1}"
         headers = { 'content-type': 'application/json' }
         team = event.get('team')
         game = event.get('game')
         if game.has_key(team) :
+            logger.info("Slacking: {0}", team)
             team = game.get(event.team)
             msg = str.format(team[0],team[1])
             payload={
