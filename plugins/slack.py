@@ -36,13 +36,9 @@ class Plugin():
         
         if players != None :
             p = players[team]
-            logger.info('-------------------------------')
-            logger.info(p)
-            logger.info('-------------------------------')
-
             msg = str.format(p[0],p[1])
             payload={
                 "username":"foosball",
                 "text": msg}
-            logger.debug(payload)
-            #response = requests.post(url, data=json.dumps(payload), headers=headers)
+            logger.info(payload)
+            response = requests.post(url, data=json.dumps(payload), headers=headers)
