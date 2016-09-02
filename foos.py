@@ -5,6 +5,7 @@ import logging.config
 import sys
 import getopt
 import os
+import time
 
 from foos.ui import ui
 import plugins.io_keyboard
