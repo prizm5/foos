@@ -17,7 +17,7 @@ green_button=17
 yellow_trigger=23
 black_trigger=24
 
-server_port=8000
+server_port='8000'
 web_folder='web'
 
 # dev set
