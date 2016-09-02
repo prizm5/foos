@@ -2,9 +2,6 @@
 import config
 import os
 from subprocess import call
-import SimpleHTTPServer
-import SocketServer
-import config
 
 class Plugin:
     def __init__(self, bus):
