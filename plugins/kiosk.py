@@ -8,4 +8,4 @@ class Plugin:
         a=1
         
     def run(self):
-        call("chromium-browser http://localhost:8000/web",config.web_folder,config.server_port], shell=True)
+        call("chromium-browser http://localhost:8000/web", shell=True)
