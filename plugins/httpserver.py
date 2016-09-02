@@ -5,6 +5,7 @@ from subprocess import call
 
 class Plugin:
     def __init__(self, bus):
+        a=1
         
     def run(self):
-        call(["web/startserver.sh",config.web_folder,config.server_port])
+        call("python -m SimpleHTTPServer " + config.server_port , shell=True)
