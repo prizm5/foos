@@ -45,7 +45,7 @@ class Plugin():
             d = ev.data
         else:
             d= {}
-        self.pusher.trigger("foosball-out", ev.name, d)
+        self.pusher.trigger(config.pusher_channel_out, ev.name, d)
 
     def connect_handler(self, data):
         channel = self.p.subscribe(config.pusher_channel)

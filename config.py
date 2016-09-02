@@ -6,6 +6,7 @@ hipchat_token = 'your_token'
 hipchat_room = 'your_room_id'
 
 pusher_channel ='foosball'
+pusher_channel_out ='foosball-out'
 
 min_goal_usecs = 1000
 min_secs_between_goals = 3
@@ -16,9 +17,11 @@ green_button=17
 yellow_trigger=23
 black_trigger=24
 
+server_port=8000
+web_folder='web'
 
 # dev set
-plugins = ['pusherclient', 'game', 'score','physical', 'control', 'league', 'slack']
+plugins = ['pusherclient', 'game', 'score', 'physical', 'control', 'league', 'slack', 'httpserver']
 
 # full blown set: arduino, camera, league & sync, upload, chat
 # plugins = ['replay', 'camera', 'score', 'game', 'upload', 'sound', 'leds', 'io_debug', 'io_serial', 'standby', 'menu', 'control', 'hipbot', 'motiondetector', 'league', 'event_debugger', 'league_sync']
