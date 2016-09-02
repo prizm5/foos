@@ -21,7 +21,7 @@ server_port='8000'
 web_folder='web'
 
 # dev set
-plugins = ['pusherclient', 'game', 'score', 'physical', 'control', 'league', 'slack', 'httpserver','kiosk']
+plugins = ['pusherclient', 'game', 'score', 'physical', 'control', 'league', 'slack','sound']
 
 # full blown set: arduino, camera, league & sync, upload, chat
 # plugins = ['replay', 'camera', 'score', 'game', 'upload', 'sound', 'leds', 'io_debug', 'io_serial', 'standby', 'menu', 'control', 'hipbot', 'motiondetector', 'league', 'event_debugger', 'league_sync']
