@@ -1,5 +1,4 @@
 export default function(previousState, action){
-  console.log('reducing...');
   var newScore, newGame;
   switch(action.type){
     case 'score_reset':
@@ -14,8 +13,8 @@ export default function(previousState, action){
     case 'set_game_mode':
       newGame = Object.assign({}, previousState.game, { mode: action.payload.mode})
       return Object.assign({}, previousState, {game: newGame});
-    case 'win_game':
-
+    case 'time_update':
+      return Object.assign({}, previousState, {time: action.payload});
     default: return previousState;
   }
 }

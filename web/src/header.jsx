@@ -1,13 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-export default class Header extends React.Component{
+class Header extends React.Component{
   constructor(props){
     super(props);
   }
 
   render(){
+    console.log(this.props);
     return <span>
       <div className="left shadowed">Fine, Nils!</div>
-      <div className="right shadowed">5:00</div></span>;
+      <div className="right shadowed">{this.props.store.getState().time}</div></span>;
   }
 }
+
+let mapStateToProps = (state) => {
+  return {time: state.time};
+};
+
+let container = connect(mapStateToProps)(Header);
+export default container;
