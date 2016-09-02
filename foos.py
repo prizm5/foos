@@ -47,6 +47,8 @@ if gui.is_x11():
 PluginHandler(bus)
 
 # Run main gui main loop
-logger.info("Run GUI")
-gui.run()
-gui.cleanup()
+# logger.info("Run GUI")
+# gui.run()
+# gui.cleanup()
+while True:
+    time.sleep(1)

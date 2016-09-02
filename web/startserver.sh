@@ -4,4 +4,4 @@ if [ $# -lt 2 ]; then
   exit 1
 fi
 
-pushd $1; python -m SimpleHTTPServer $2; popd
+python -m SimpleHTTPServer $2

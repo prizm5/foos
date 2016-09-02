@@ -7,4 +7,4 @@ class Plugin:
     def __init__(self, bus):
         
     def run(self):
-        call(["web/startserver.sh",config.web_folder,config.server_port])
+        call("chromium-browser http://localhost:8000/web",config.web_folder,config.server_port], shell=True)
