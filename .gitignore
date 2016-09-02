@@ -5,4 +5,3 @@ config.py
 client_secrets.json
 league
 node_modules/
-web/public/app.js
