@@ -8,4 +8,4 @@ import config
 
 class Plugin:
     def __init__(self, bus):
-    call(["web/startserver.sh",config.web_folder,config.server_port])
+        call(["web/startserver.sh",config.web_folder,config.server_port])
