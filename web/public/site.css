@@ -1,0 +1,73 @@
+body {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  background: no-repeat center/100% url("./images/cc4.jpg");
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+#header {
+  height: 140px;
+  font-weight: bolder;
+  font-size: xx-large;
+  padding: 20px;
+  font-size: 50px;
+}
+
+.score-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.number-container {
+  float: left;
+  font-size: 300px;
+  background-color: white;
+  border-radius: 50%;
+  color: gray;
+  width: 500px;
+  height: 500px;
+  text-align: center;
+  line-height: 500px;
+}
+
+.left-score {
+  margin-right: 350px;
+}
+
+.black {
+  color: black;
+}
+
+.names p {
+  font-weight: bold;
+  font-size: 3em;
+  margin: 0;
+}
+
+.shadowed {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.winner {
+  transition: transform 2s ease;
+  transform: scale(1.5);
+}
+
+.in-progress {
+  transform: scale(1);
+  transition: transform 2s ease;
+}
+
+.loser {
+  transition: transform 2s ease;
+  transform: scale(0.5);
+}
