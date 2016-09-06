@@ -20,7 +20,7 @@ body {
   font-size: 50px;
 }
 
-.score-row {
+.score-row, #trains {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,4 +70,36 @@ body {
 .loser {
   transition: transform 2s ease;
   transform: scale(0.5);
+}
+
+#trains {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  height: 140px;
+  left: 0;
+  right: 0;
+  padding: 5px;
+}
+
+#trains h3 {
+  margin-top: 0;
+}
+
+.train {
+  width: 25%;
+  float: left;
+}
+
+.train span {
+  display: block;
+  padding-top: 5px;
+}
+
+.train .late {
+  color: red;
+}
+
+.train .on-time {
+  color: green;
 }

@@ -15,6 +15,8 @@ export default function(previousState, action){
       return Object.assign({}, previousState, {game: newGame});
     case 'time_update':
       return Object.assign({}, previousState, {time: action.payload});
+    case 'trains_loaded':
+      return Object.assign({}, previousState, {trains: action.payload});
     default: return previousState;
   }
 }
