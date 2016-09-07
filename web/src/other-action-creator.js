@@ -43,12 +43,12 @@ function runOnTimer(fn, args, interval) {
 }
 
 export default function(store) {
-  // runOnTimer(() => {
-  //     store.dispatch({
-  //         type: 'time_update',
-  //         payload: moment().format('h:mm:ss')
-  //     })
-  // }, [], 1000);
+  runOnTimer(() => {
+    store.dispatch({
+      type: 'time_update',
+      payload: moment().format('h:mm:ss')
+    })
+  }, [], 1000);
 
   runOnTimer(() => {
     getTrainsForUsers(store)
@@ -56,5 +56,5 @@ export default function(store) {
         type: 'trains_loaded',
         payload: d
       }))
-  }, [], 5000);
+  }, [], 30000);
 }
