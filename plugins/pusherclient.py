@@ -31,7 +31,7 @@ class Plugin():
 
         self.log_events = ['people_start_playing', 'people_stop_playing',
                           'score_goal', 'win_game', 'set_players',
-                          'score_reset','set_game_mode']
+                          'score_reset','set_game_mode','start_game']
 
         self.bus.subscribe(self.process_event, thread=True,subscribed_events=self.log_events)
     
