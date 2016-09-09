@@ -20,7 +20,9 @@ function jsonp(start, end, cb) {
 }
 
 function getTrainsForUsers(store) {
-  let users = store.getState().game.team1.concat(store.getState().game.team2);
+  let users = store.getState().game.team1
+    .concat(store.getState().game.team2)
+    .filter(u => !!u.station);
   return Promise.all(users.map(user => getTrains(user.station, user)));
 }
 
@@ -43,18 +45,20 @@ function runOnTimer(fn, args, interval) {
 }
 
 export default function(store) {
-  runOnTimer(() => {
-    store.dispatch({
-      type: 'time_update',
-      payload: moment().format('h:mm:ss')
-    })
-  }, [], 1000);
+  // runOnTimer(() => {
+  //   store.dispatch({
+  //     type: 'time_update',
+  //     payload: moment().format('h:mm:ss')
+  //   })
+  // }, [], 1000);
 
   runOnTimer(() => {
     getTrainsForUsers(store)
-      .then(d => store.dispatch({
-        type: 'trains_loaded',
-        payload: d
-      }))
-  }, [], 30000);
+      .then(d => {
+        store.dispatch({
+          type: 'trains_loaded',
+          payload: d
+        })
+      })
+  }, [], 10000);
 }
