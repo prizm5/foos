@@ -46,6 +46,14 @@ class Plugin():
         self.bus.notify("set_game_mode", {"mode": 10 })
         self.bus.notify("reset_score")
         self.bus.notify("set_players",{'black':['Player 1','Player 2'], 'yellow':['Player 3','Player 4']})
+        # start = {
+        #         "black":["Player 1","Player 2"], 
+        #         "yellow":["Player 3","Player 4"],
+        #         "mode": 10,
+        #         "stations": [ { "name": "Faiz", "station": "Secane" },
+        #                       { "name": "Nilhouse", "station": "Gladstone" } ]
+        #         } 
+        # self.bus.notify("start_game",start )
         
     def handle_green_button(self, channel):
         if self.game_mode == GameState.Active and self.greenpush == 1 :
