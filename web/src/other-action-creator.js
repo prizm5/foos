@@ -14,7 +14,7 @@ function jsonp(start, end, cb) {
       cb(trips);
     },
     error: function(error) {
-      console.log('error: ', error);
+      cb();
     }
   });
 }
@@ -29,9 +29,15 @@ function getTrainsForUsers(store) {
 function getTrains(station, user) {
   return new Promise((resolve, reject) => {
     let cb = data => {
-      resolve(Object.assign(data[0], {
-        user: user
-      }));
+      if (!!data) {
+        resolve(Object.assign(data[0], {
+          user: user
+        }));
+      } else {
+        resolve({
+          user: user
+        });
+      }
     };
     jsonp('Suburban Station', station, cb)
   });
@@ -45,12 +51,12 @@ function runOnTimer(fn, args, interval) {
 }
 
 export default function(store) {
-  // runOnTimer(() => {
-  //   store.dispatch({
-  //     type: 'time_update',
-  //     payload: moment().format('h:mm:ss')
-  //   })
-  // }, [], 1000);
+  runOnTimer(() => {
+    store.dispatch({
+      type: 'time_update',
+      payload: moment().format('h:mm:ss')
+    })
+  }, [], 1000);
 
   runOnTimer(() => {
     getTrainsForUsers(store)
