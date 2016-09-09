@@ -61,8 +61,8 @@ class Plugin():
         self.bus.notify("set_game_mode", {"mode": data["mode"] })
         self.bus.notify("reset_score")
         self.bus.notify("set_players",
-            {'black':[x['name'] for x in data["black"]], 
-             'yellow':[x['name'] for x in data["yellow"]]})
+            {'black':data["black"], 
+             'yellow':data["yellow"]})
 
 #{
 #  "yellow": ["Nilhouse", "Keith"],
