@@ -10,5 +10,5 @@ class Plugin:
         self.bus.subscribe_map(fmap, thread=True)
 
     def snap(self):
-	call("video/capture.sh")
+        call("video/capture.sh")
         self.bus.notify('picture_captured')
