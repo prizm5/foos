@@ -29,7 +29,7 @@ function getTrainsForUsers(store) {
 function getTrains(station, user) {
   return new Promise((resolve, reject) => {
     let cb = data => {
-      if (!!data) {
+      if (!!data && !!data[0]) {
         resolve(Object.assign(data[0], {
           user: user
         }));

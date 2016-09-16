@@ -1,7 +1,7 @@
 body {
   color: white;
   font-family: 'Roboto', sans-serif;
-  background: no-repeat center/100% url("./images/cc4.jpg");
+  background: no-repeat center/100% url(./images/cc3.jpg);
 }
 
 .right {
@@ -63,7 +63,7 @@ body {
 }
 
 .in-progress {
-  transform: scale(1);
+  transform: scale(.75);
   transition: transform 2s ease;
 }
 
@@ -76,19 +76,20 @@ body {
   background-color: black;
   position: absolute;
   bottom: 0;
-  height: 140px;
+  height: 180px;
   left: 0;
   right: 0;
   padding: 5px;
 }
 
 #trains h3 {
-  margin-top: 0;
+  margin: 0;
 }
 
 .train {
   width: 25%;
   float: left;
+  font-size: xx-large;
 }
 
 .train span {
