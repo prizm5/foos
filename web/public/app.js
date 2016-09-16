@@ -40488,7 +40488,7 @@ exports.default = function (store) {
     return store.dispatch({ type: name, payload: event });
   });
 
-  channel.bind('score_goal', function (g) {
+  channel.bind('picture_captured', function (g) {
     document.body.style = "background-image: url('./public/images/goal.jpg?v=" + Date.now() + ");";
   });
 };

@@ -6,7 +6,7 @@ export default function(store) {
   let channel = pusher.subscribe('foosball-out');
   channel.bind_all((name, event) => store.dispatch({ type: name, payload: event }));
 
-  channel.bind('score_goal', g => {
+  channel.bind('picture_captured', g => {
     document.body.style = "background-image: url('./public/images/goal.jpg?v=" + Date.now() + ");";
   });
 }
