@@ -7,6 +7,6 @@ export default function(store) {
   channel.bind_all((name, event) => store.dispatch({ type: name, payload: event }));
 
   channel.bind('score_goal', g => {
-    document.body.style = "background-image: url('./public/images/cc3.jpg?v=" + Date.now() + ");";
+    document.body.style = "background-image: url('./public/images/goal.jpg?v=" + Date.now() + ");";
   });
 }
