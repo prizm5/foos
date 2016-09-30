@@ -46,11 +46,15 @@ class Plugin:
         self.scores[team] = (s + 1)
         self.pushState()
         self.scores[team] = (s + 1) % 10
+        data = self.__get_event_data()
+        self.bus.notify('score_goal', data)
 
     def decrement(self, team):
         s = self.scores.get(team, 0)
         self.scores[team] = max(s - 1, 0)
         self.pushState()
+        data = self.__get_event_data()
+        self.bus.notify('score_goal', data)
 
     def load(self, state):
         self.scores['yellow'] = state.yellow_goals
