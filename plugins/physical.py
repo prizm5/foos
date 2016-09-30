@@ -47,10 +47,10 @@ class Plugin():
         self.bus.notify("reset_score")
         self.bus.notify("set_players",{'black':[
             {'name':'Player 1','station':'Gladstone'},
-            {'name':'Player 2','station':'Queen Lane'},
+            {'name':'Player 2','station':'Queen Lane'}
             ], 'yellow':[
             {'name':'Player 3','station':'Strafford'},
-            {'name':'Player 4','station':'Penllyn'},
+            {'name':'Player 4','station':'Penllyn'}
             ])
         # start = {
         #         "black":["Player 1","Player 2"], 
