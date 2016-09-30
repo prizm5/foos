@@ -9,7 +9,7 @@ pusher_channel ='foosball'
 pusher_channel_out ='foosball-out'
 
 min_goal_usecs = 1000
-min_secs_between_goals = 3
+min_secs_between_goals = 0
 
 button_debnce=500
 red_button=27
@@ -21,7 +21,7 @@ server_port='8000'
 web_folder='web'
 
 # dev set
-plugins = ['pusherclient', 'game', 'score', 'physical', 'control', 'league', 'slack', 'sound', 'goalpic']
+plugins = ['pusherclient', 'game', 'score', 'physical', 'control', 'sound', 'goalpic','event_timer']
 
 # full blown set: arduino, camera, league & sync, upload, chat
 # plugins = ['replay', 'camera', 'score', 'game', 'upload', 'sound', 'leds', 'io_debug', 'io_serial', 'standby', 'menu', 'control', 'hipbot', 'motiondetector', 'league', 'event_debugger', 'league_sync']
