@@ -18,7 +18,7 @@ CLIENT_SECRETS_FILE = "client_secrets.json"
 class Plugin():
     def __init__(self, bus):
         self.bus = bus
-        schedule.every().day.at("12:55").do(job_function)
+        schedule.every().day.at("12:55").do(self.job_function)
 
     def run(self):
         while True:
@@ -26,5 +26,5 @@ class Plugin():
             schedule.run_pending()
             time.sleep(1)
         
-    def job_function():
+    def job_function(self):
         self.bus.notify('sudden_death')
