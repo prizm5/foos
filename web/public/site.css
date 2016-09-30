@@ -1,106 +1,107 @@
 body {
-  color: white;
-  font-family: 'Roboto', sans-serif;
-  background: no-repeat center/100% url(./images/cc3.jpg);
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    background: no-repeat center/100% url(./images/cc3.jpg);
 }
 
 .right {
-  float: right;
+    float: right;
 }
 
 .left {
-  float: left;
+    float: left;
 }
 
 #header {
-  height: 140px;
-  font-weight: bolder;
-  font-size: xx-large;
-  padding: 20px;
-  font-size: 50px;
+    height: 140px;
+    font-weight: bolder;
+    font-size: xx-large;
+    padding: 20px;
+    font-size: 50px;
 }
 
-.score-row, #trains {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.score-row,
+#trains {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .number-container {
-  float: left;
-  font-size: 300px;
-  background-color: white;
-  border-radius: 50%;
-  color: gray;
-  width: 500px;
-  height: 500px;
-  text-align: center;
-  line-height: 500px;
+    float: left;
+    font-size: 300px;
+    background-color: white;
+    border-radius: 50%;
+    color: gray;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    line-height: 500px;
 }
 
 .left-score {
-  margin-right: 350px;
+    margin-right: 350px;
 }
 
 .black {
-  color: black;
+    color: black;
 }
 
 .names p {
-  font-weight: bold;
-  font-size: 3em;
-  margin: 0;
+    font-weight: bold;
+    font-size: 3em;
+    margin: 0;
 }
 
 .shadowed {
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .winner {
-  transition: transform 2s ease;
-  transform: scale(1.5);
+    transition: transform 2s ease;
+    transform: scale(1.5);
 }
 
 .in-progress {
-  transform: scale(.75);
-  transition: transform 2s ease;
+    transform: scale(.5);
+    transition: transform 2s ease;
 }
 
 .loser {
-  transition: transform 2s ease;
-  transform: scale(0.5);
+    transition: transform 2s ease;
+    transform: scale(0.5);
 }
 
 #trains {
-  background-color: black;
-  position: absolute;
-  bottom: 0;
-  height: 180px;
-  left: 0;
-  right: 0;
-  padding: 5px;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    height: 180px;
+    left: 0;
+    right: 0;
+    padding: 5px;
 }
 
 #trains h3 {
-  margin: 0;
+    margin: 0;
 }
 
 .train {
-  width: 25%;
-  float: left;
-  font-size: xx-large;
+    width: 25%;
+    float: left;
+    font-size: xx-large;
 }
 
 .train span {
-  display: block;
-  padding-top: 5px;
+    display: block;
+    padding-top: 5px;
 }
 
 .train .late {
-  color: red;
+    color: red;
 }
 
 .train .on-time {
-  color: green;
+    color: green;
 }
