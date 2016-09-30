@@ -70,7 +70,7 @@ body {
 
 .loser {
     transition: transform 2s ease;
-    transform: scale(0.5);
+    transform: scale(0.25);
 }
 
 #trains {

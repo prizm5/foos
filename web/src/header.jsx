@@ -8,7 +8,6 @@ class Header extends React.Component{
 
   render(){
     return <span>
-      <div className="left shadowed">Fine, Nils!</div>
       <div className="right shadowed">{this.props.store.getState().time}</div></span>;
   }
 }

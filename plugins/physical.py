@@ -45,7 +45,13 @@ class Plugin():
     def handle_red_button(self, channel):
         self.bus.notify("set_game_mode", {"mode": 10 })
         self.bus.notify("reset_score")
-        self.bus.notify("set_players",{'black':['Player 1','Player 2'], 'yellow':['Player 3','Player 4']})
+        self.bus.notify("set_players",{'black':[
+            {'name':'Player 1','station':'Gladstone'},
+            {'name':'Player 2','station':'Queen Lane'},
+            ], 'yellow':[
+            {'name':'Player 3','station':'Strafford'},
+            {'name':'Player 4','station':'Penllyn'},
+            ])
         # start = {
         #         "black":["Player 1","Player 2"], 
         #         "yellow":["Player 3","Player 4"],
