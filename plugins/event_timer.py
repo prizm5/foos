@@ -18,8 +18,6 @@ CLIENT_SECRETS_FILE = "client_secrets.json"
 class Plugin():
     def __init__(self, bus):
         self.bus = bus
-        self.sched = Scheduler()
-        self.sched.start()
         schedule.every().day.at("12:55").do(job_function)
 
     def run(self):
