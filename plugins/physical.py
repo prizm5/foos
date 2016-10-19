@@ -14,6 +14,7 @@ class Plugin():
     def __init__(self, bus):
         self.bus = bus
         self.bus.subscribe(self.process_event, thread=True)
+        self.last_green = 0.0
         GPIO.setmode(GPIO.BCM)
         
         self.AddButton(config.red_button, self.handle_red_button, config.button_debnce)
@@ -45,10 +46,15 @@ class Plugin():
             self.bus.notify('decrement_score', {'team': self.last_goal})
 
     def handle_green_button(self, channel):
-        self.bus.notify("set_game_mode", {"mode": 10 })
-        self.bus.notify("reset_score")
-        self.bus.notify("set_players",{'black':[{'name':'Player 1','station':'Gladstone'}, {'name':'Player 2','station':'Queen Lane'}], 
+        now = time.time()
+        if now - self.last_green < 2:
+            self.last_green = 0.0
+            self.bus.notify("set_game_mode", {"mode": 10 })
+            self.bus.notify("reset_score")
+            self.bus.notify("set_players",{'black':[{'name':'Player 1','station':'Gladstone'}, {'name':'Player 2','station':'Queen Lane'}], 
                                       'yellow':[{'name':'Player 3','station':'Strafford'}, {'name':'Player 4','station':'Penllyn'}]})
+        else:
+            self.last_green = now
 
 
     def AddSensor(self, port, callback, bounce):
